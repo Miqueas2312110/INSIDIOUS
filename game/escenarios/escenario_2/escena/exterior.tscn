@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cd7jmuukhbyd5"]
+
+[ext_resource type="Texture2D" uid="uid://c7wfsh1my6k2p" path="res://game/escenarios/escenario_2/fondos/prueba_escenario.png" id="1_3727t"]
+[ext_resource type="PackedScene" uid="uid://kfhiifwbvjbc" path="res://game/personajes/donnie/donnie.tscn" id="2_acpss"]
+[ext_resource type="PackedScene" uid="uid://61mdhbgx6rur" path="res://game/personajes/enemigos/maniqui/enemigo_maniqui.tscn" id="3_acpss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnpva"]
+size = Vector2(1540.4902, 111.66011)
+
+[node name="exterior" type="Node2D" unique_id=1500363316]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=947499325]
+position = Vector2(184, -251)
+scale = Vector2(5.514, 3.5399997)
+texture = ExtResource("1_3727t")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1177832342]
+position = Vector2(-1147, -122)
+scale = Vector2(1.7832, 1.518)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2025539798]
+position = Vector2(746.69135, 104.57839)
+scale = Vector2(0.99999887, 0.9999998)
+shape = SubResource("RectangleShape2D_fnpva")
+
+[node name="Donnie" parent="." unique_id=1415840545 instance=ExtResource("2_acpss")]
+position = Vector2(-1175, -124)
+scale = Vector2(1.7832, 1.518)
+
+[node name="Camera2D" type="Camera2D" parent="Donnie" unique_id=1815239478]
+position = Vector2(-22.99237, -3.952564)
+limit_left = -1202
+limit_top = -615
+limit_right = 1550
+limit_bottom = 116
+limit_smoothed = true
+
+[node name="character" parent="." unique_id=467114270 instance=ExtResource("3_acpss")]
+position = Vector2(303, -231)

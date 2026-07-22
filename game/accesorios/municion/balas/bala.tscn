@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://pt6xc5id2jn5"]
+
+[ext_resource type="Script" uid="uid://dhdrwlwkkts4v" path="res://game/accesorios/municion/balas/bala.gd" id="1_ag3k0"]
+[ext_resource type="Texture2D" uid="uid://cdm88cg3fowwp" path="res://game/accesorios/municion/sprites/bullet_shell_frame_0.png" id="2_hklt7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4wd0"]
+size = Vector2(21, 9)
+
+[node name="Bullet" type="CharacterBody2D" unique_id=2082277183]
+script = ExtResource("1_ag3k0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1347164597]
+rotation = 1.5713917
+texture = ExtResource("2_hklt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1639545306]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_t4wd0")

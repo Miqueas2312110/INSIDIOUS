@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://61mdhbgx6rur"]
+
+[ext_resource type="Texture2D" uid="uid://c87j5o833qr52" path="res://game/personajes/enemigos/maniqui/sprites/donnie_enemy_sheet.png" id="1_jx51q"]
+[ext_resource type="Script" uid="uid://boo1r2tdy373r" path="res://game/personajes/enemigos/maniqui/maniqui_enemigo.gd" id="2_osso8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dq3do"]
+radius = 16.0
+height = 128.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg387"]
+atlas = ExtResource("1_jx51q")
+region = Rect2(0, 0, 158, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g84j"]
+atlas = ExtResource("1_jx51q")
+region = Rect2(158, 0, 158, 157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aynas"]
+atlas = ExtResource("1_jx51q")
+region = Rect2(316, 0, 158, 157)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2rfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg387")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g84j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aynas")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="character" type="CharacterBody2D" unique_id=467114270]
+script = ExtResource("2_osso8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1079159224]
+position = Vector2(553, 118)
+shape = SubResource("CapsuleShape2D_dq3do")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=588843858]
+position = Vector2(541, 103)
+sprite_frames = SubResource("SpriteFrames_r2rfw")
+frame_progress = 0.99364525

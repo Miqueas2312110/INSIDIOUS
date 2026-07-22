@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://6v71alpjl47x"]
+
+[ext_resource type="Texture2D" uid="uid://dxheu7wq4d8n7" path="res://game/accesorios/armas/escopeta/escopeta.png" id="1_5bb75"]
+[ext_resource type="Script" uid="uid://bn6x4wh336wpg" path="res://game/accesorios/armas/escopeta/escopeta.gd" id="2_d2mhk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oeqp"]
+size = Vector2(93, 31.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vvem"]
+size = Vector2(104, 32)
+
+[node name="Shotgun" type="CharacterBody2D" unique_id=1696735166]
+script = ExtResource("2_d2mhk")
+
+[node name="SpritePivot" type="Node2D" parent="." unique_id=233203137]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpritePivot" unique_id=591551269]
+position = Vector2(0.59353495, 0.52025443)
+rotation = 1.5707964
+scale = Vector2(0.97992176, 1.1030924)
+texture = ExtResource("1_5bb75")
+
+[node name="Marker2D" type="Marker2D" parent="SpritePivot" unique_id=133938112]
+position = Vector2(22, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2077576430]
+shape = SubResource("RectangleShape2D_7oeqp")
+
+[node name="PickupZone" type="Area2D" parent="." unique_id=19687809]
+position = Vector2(10, 23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupZone" unique_id=611873864]
+position = Vector2(-10, -23)
+shape = SubResource("RectangleShape2D_6vvem")
+
+[connection signal="body_entered" from="PickupZone" to="." method="_on_pickup_zone_body_entered"]
+[connection signal="body_exited" from="PickupZone" to="." method="_on_pickup_zone_body_exited"]

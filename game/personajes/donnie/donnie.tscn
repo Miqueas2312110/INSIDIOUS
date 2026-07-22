@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://kfhiifwbvjbc"]
+
+[ext_resource type="Texture2D" uid="uid://djyhjfd8h3guf" path="res://game/personajes/donnie/sprites/walk_sheet.png" id="1_ew41m"]
+[ext_resource type="Script" uid="uid://c0rx6ersd38gy" path="res://game/personajes/donnie/donnie.gd" id="1_t7cif"]
+[ext_resource type="Texture2D" uid="uid://djrse7y51jyl6" path="res://game/personajes/donnie/sprites/idle_sheet.png" id="2_t7cif"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0dlo"]
+atlas = ExtResource("1_ew41m")
+region = Rect2(0, 0, 64, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufvoi"]
+atlas = ExtResource("1_ew41m")
+region = Rect2(64, 0, 64, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfj0o"]
+atlas = ExtResource("1_ew41m")
+region = Rect2(128, 0, 64, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mytf"]
+atlas = ExtResource("1_ew41m")
+region = Rect2(192, 0, 64, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7wk3"]
+atlas = ExtResource("1_ew41m")
+region = Rect2(256, 0, 64, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpgyu"]
+atlas = ExtResource("1_ew41m")
+region = Rect2(320, 0, 64, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8xb6"]
+atlas = ExtResource("1_ew41m")
+region = Rect2(384, 0, 64, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoalx"]
+atlas = ExtResource("2_t7cif")
+region = Rect2(0, 0, 64, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wkmc"]
+atlas = ExtResource("2_t7cif")
+region = Rect2(64, 0, 64, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e4vtk"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_w0dlo")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ufvoi")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_hfj0o")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_2mytf")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_x7wk3")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_gpgyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8xb6")
+}],
+"loop": true,
+"name": &"caminata",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 3.5,
+"texture": SubResource("AtlasTexture_hoalx")
+}, {
+"duration": 3.5,
+"texture": SubResource("AtlasTexture_5wkmc")
+}],
+"loop": true,
+"name": &"quieto",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kg5yj"]
+height = 86.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qj235"]
+size = Vector2(120, 120)
+
+[node name="Donnie" type="CharacterBody2D" unique_id=1415840545]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_t7cif")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1620421819]
+position = Vector2(10, -20.000002)
+scale = Vector2(1.15625, 1.3197675)
+sprite_frames = SubResource("SpriteFrames_e4vtk")
+animation = &"quieto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=380608010]
+position = Vector2(8, -6)
+shape = SubResource("CapsuleShape2D_kg5yj")
+
+[node name="PickupArea" type="Area2D" parent="." unique_id=320091681]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=1627997185]
+shape = SubResource("RectangleShape2D_qj235")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="." method="_on_pickup_area_body_exited"]
+[connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
+[connection signal="area_exited" from="PickupArea" to="." method="_on_pickup_area_area_exited"]
